@@ -13,8 +13,8 @@ router.post("/cadastrar", addProblem);
 
 // Rotas de consulta
 router.get("/", listarProblemas);
-router.get("/:cidade", listarProblemasPorCidade);
-router.get("/filter/:status", getProblemsByStatus);
+router.get("/filter-city/:cidade", listarProblemasPorCidade);
+router.get("/filter-status/:status", getProblemsByStatus);
 
 
 export default router;

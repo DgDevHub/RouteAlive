@@ -55,10 +55,10 @@ Cadastra um novo problema.
 ### GET `/problems/`
 Lista todos os problemas cadastrados.
 
-### GET `/problems/:cidade`
+### GET `/problems/filter-city/:cidade`
 Filtra os problemas por cidade (sem acento e espaços).
 
-### GET `/problems/filter/:status`
+### GET `/problems/filter-status/:status`
 Filtra os problemas por status (`pendente`, `resolvido`, etc).
 
 ---

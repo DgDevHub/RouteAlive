@@ -13,7 +13,7 @@ export class Problem {
     this.status = status;
   }
 
-  // banco simulado em memória (privado)
+  // banco simulado (privado)
   static #problems = [];
 
   // Método para pegar todos problemas
