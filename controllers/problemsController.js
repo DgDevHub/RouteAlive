@@ -26,6 +26,23 @@ export const listarProblemasPorCidade = (req, res) => {
   res.json(filtrados);
 };
 
+// Função responsável por listar problemas filtrados pelo tipo (ex.: "buraco", "alagamento", etc)
+export const getProblemsByType = (req, res) => {
+  // Obtém o tipo da requisição (ex.: /tipo/:tipo)
+  const tipo = req.params.tipo;
+
+  // Chama o método da Model para buscar os problemas com o tipo especificado
+  const filtrados = Problem.getProblemsByType(tipo);
+
+  // Se não encontrar nenhum problema com esse tipo, retorna erro 404
+  if (filtrados.length === 0) {
+    return res.status(404).json({ mensagem: "Nenhum problema com esse tipo encontrado" });
+  }
+
+  // Se encontrar problemas com o tipo solicitado, retorna eles em formato JSON
+  res.json(filtrados);
+};
+
 // Função responsável por listar problemas filtrados pelo status (ex.: "pendente", "resolvido")
 export const getProblemsByStatus = (req, res) => {
   // Obtém o status da requisição (ex.: /filter/:status)

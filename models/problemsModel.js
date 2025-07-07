@@ -37,6 +37,13 @@ export class Problem {
     );
   }
 
+  static getProblemsByType(typeParam) {
+    return Problem.#problems.filter(
+      (p) => Problem.normalizarTexto(p.tipo) === Problem.normalizarTexto(typeParam)
+    );
+  }
+
+
   // Método para obter problemas por status
   static getProblemsByStatus(statusParam) {
     return Problem.#problems.filter(
@@ -51,3 +58,44 @@ export class Problem {
     return novoProblema;  // Retorna o problema recém-criado
   }
 }
+
+const tipos = [
+  "Animal",
+  "Iluminação",
+  "Buraco",
+  "Inundações",
+  "Acidentes"
+];
+
+const cidades = [
+  "São Paulo",
+  "Rio de Janeiro",
+  "Curitiba",
+  "Belo Horizonte",
+  "Porto Alegre"
+];
+
+const statusList = ["pendente", "em andamento", "resolvido"];
+
+const descricoes = {
+  Animais: "Animal solto em via pública, pode causar acidentes.",
+  Iluminação: "Poste sem luz, rua escura à noite.",
+  Buraco: "Buraco na pista, prejudicando o tráfego.",
+  Inundações: "Rua alagada após chuva forte.",
+  Acidentes: "Acidente de trânsito registrado na via."
+};
+
+// Gera 10 problemas para cada tipo
+tipos.forEach((tipo) => {
+  for (let i = 0; i < 10; i++) {
+    Problem.addProblem({
+      tipo: tipo,
+      cidade: cidades[i % cidades.length],
+      descricao: `${descricoes[tipo]} Caso número ${i + 1}.`,
+      localizacao: `Rua Exemplo ${i + 1}, ${cidades[i % cidades.length]}`,
+      data: new Date(2025, 6, (i % 28) + 1), // Julho de 2025
+      status: statusList[i % statusList.length]
+    });
+  }
+});
+

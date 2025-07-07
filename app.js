@@ -1,18 +1,20 @@
-//Esqueleto da API
-
 import express from "express";
+import cors from "cors"; // <-- IMPORTANTE!
 import problemsRoutes from "./routes/problemsRoutes.js";
 
 const app = express();
-const PORT = 3000;
+const PORT = 3001;
 
-// Middleware para entender JSON no body
+// 🔓 Permitir requisições de outras origens (ex: localhost:3000)
+app.use(cors());
+
+// 🧠 Middleware para entender JSON no body
 app.use(express.json());
 
-// Rotas
+// 🌐 Rotas
 app.use("/problems", problemsRoutes);
 
-// Inicializa servidor
+// 🚀 Inicializa servidor
 app.listen(PORT, () => {
   console.log("🚀 Servidor rodando na porta " + PORT);
 });
