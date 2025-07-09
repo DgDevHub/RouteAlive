@@ -78,7 +78,7 @@ const cidades = [
 const statusList = ["pendente", "em andamento", "resolvido"];
 
 const descricoes = {
-  Animais: "Animal solto em via pública, pode causar acidentes.",
+  Animal: "Animal solto em via pública, pode causar acidentes.",
   Iluminação: "Poste sem luz, rua escura à noite.",
   Buraco: "Buraco na pista, prejudicando o tráfego.",
   Inundações: "Rua alagada após chuva forte.",
