@@ -1,5 +1,5 @@
 // Model - Responsável por representar os dados e a lógica de negócio.
-
+import { faker } from '@faker-js/faker/locale/pt_BR';
 import { v4 as uuidv4 } from 'uuid';
 
 export class Problem {
