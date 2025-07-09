@@ -68,7 +68,7 @@ const tiposDeProblema = {
     "Buraco largo na entrada da avenida.",
     "Pista esburacada nos dois sentidos."
   ],
-  Inundação: [
+  Inundações: [
     "Trecho da pista intransitável devido a alagamento.",
     "Rua completamente coberta por água após chuva intensa.",
     "Ponto de alagamento recorrente durante chuvas.",
