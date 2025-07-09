@@ -59,43 +59,69 @@ export class Problem {
   }
 }
 
-const tipos = [
-  "Animal",
-  "Iluminação",
-  "Buraco",
-  "Inundações",
-  "Acidentes"
-];
+// Tipos de problemas relevantes para motoristas
+const tiposDeProblema = {
+  Buraco: [
+    "Buraco profundo na faixa da direita.",
+    "Asfalto afundando próximo ao retorno.",
+    "Cratera na curva perigosa sem sinalização.",
+    "Buraco largo na entrada da avenida.",
+    "Pista esburacada nos dois sentidos."
+  ],
+  Inundação: [
+    "Trecho da pista intransitável devido a alagamento.",
+    "Rua completamente coberta por água após chuva intensa.",
+    "Ponto de alagamento recorrente durante chuvas.",
+    "Água cobrindo metade da roda em trecho urbano.",
+    "Inundação impedindo passagem de veículos baixos."
+  ],
+  Iluminação: [
+    "Poste apagado em curva acentuada.",
+    "Trecho sem iluminação aumenta risco de acidentes.",
+    "Via expressa escura durante a noite.",
+    "Luz intermitente no cruzamento pode causar confusão.",
+    "Estrada rural sem iluminação por 1 km."
+  ],
+  Acidente: [
+    "Colisão entre dois veículos no acostamento.",
+    "Capotamento no meio da pista, trânsito parado.",
+    "Engavetamento com três carros na marginal.",
+    "Motociclista ferido após colisão com caminhão.",
+    "Carro atravessado na via após acidente."
+  ],
+  Animal: [
+    "Animal morto na pista, faixa da esquerda.",
+    "Carcaça de cachorro em ponto cego da curva.",
+    "Veado atropelado bloqueando acostamento.",
+    "Corpo de cavalo atingido na BR-101.",
+    "Animal morto oferecendo risco de novos acidentes."
+  ]
+};
 
 const cidades = [
-  "São Paulo",
-  "Rio de Janeiro",
-  "Curitiba",
-  "Belo Horizonte",
-  "Porto Alegre"
+  { nome: "São Paulo", bairros: ["Marginal Tietê", "Avenida Aricanduva", "Rodovia Anhanguera", "Imigrantes", "Raposo Tavares"] },
+  { nome: "Rio de Janeiro", bairros: ["Linha Amarela", "Avenida Brasil", "Estrada dos Bandeirantes", "Redentor", "Niterói"] },
+  { nome: "Curitiba", bairros: ["Linha Verde", "BR-277", "Contorno Sul", "Santa Cândida", "CIC"] },
+  { nome: "Belo Horizonte", bairros: ["Anel Rodoviário", "Cristiano Machado", "Contagem", "Sabará", "Pampulha"] },
+  { nome: "Porto Alegre", bairros: ["Av. Sertório", "Freeway", "BR-290", "Protásio Alves", "Zona Norte"] }
 ];
 
 const statusList = ["pendente", "em andamento", "resolvido"];
 
-const descricoes = {
-  Animal: "Animal solto em via pública, pode causar acidentes.",
-  Iluminação: "Poste sem luz, rua escura à noite.",
-  Buraco: "Buraco na pista, prejudicando o tráfego.",
-  Inundações: "Rua alagada após chuva forte.",
-  Acidentes: "Acidente de trânsito registrado na via."
-};
-
-// Gera 10 problemas para cada tipo
-tipos.forEach((tipo) => {
+tiposDeProblema && Object.entries(tiposDeProblema).forEach(([tipo, descricoes]) => {
   for (let i = 0; i < 10; i++) {
+    const cidadeObj = cidades[Math.floor(Math.random() * cidades.length)];
+    const bairro = cidadeObj.bairros[Math.floor(Math.random() * cidadeObj.bairros.length)];
+    const rua = faker.location.street();
+    const data = faker.date.between({ from: "2025-07-01", to: "2025-07-09" });
+
     Problem.addProblem({
-      tipo: tipo,
-      cidade: cidades[i % cidades.length],
-      descricao: `${descricoes[tipo]} Caso número ${i + 1}.`,
-      localizacao: `Rua Exemplo ${i + 1}, ${cidades[i % cidades.length]}`,
-      data: new Date(2025, 6, (i % 28) + 1), // Julho de 2025
-      status: statusList[i % statusList.length]
+      tipo,
+      cidade: cidadeObj.nome,
+      descricao: faker.helpers.arrayElement(descricoes),
+      localizacao: `${rua}, ${bairro}, ${cidadeObj.nome}`,
+      data,
+      status: faker.helpers.arrayElement(statusList)
     });
   }
 });
-
