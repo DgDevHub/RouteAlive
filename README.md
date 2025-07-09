@@ -78,7 +78,7 @@ Filtra os problemas por status (`pendente`, `resolvido`, etc).
 
 ---
 
-## 🙋 Sobre o criador
+## 🙋🏾‍♂️ Sobre o criador
 Este projeto foi desenvolvido de forma independente por um entusiasta de tecnologia e viagens, que percebeu um grande problema de segurança ao dirigir do **Sudeste ao Nordeste do Brasil**.
 
 > "Vi muitos lugares perigosos, mal sinalizados, com animais mortos na estrada. Decidi criar uma solução simples que possa ajudar outros motoristas e, quem sabe, ser integrada a apps maiores."
